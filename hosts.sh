@@ -26,6 +26,14 @@ echo "########## ########## Jonas.Ned@outlook.com ########## ##########" >> "$ou
 echo "########## ########## ########## ########## ########## ##########" >> "$output_file"
 echo " " >> "$output_file"
 
+# Include this script in 'hosts' file
+FILENAME="$PWD/$0"
+while IFS= read -r line
+do
+	echo "#-#-# $line" >> "$output_file"
+done < $FILENAME
+echo " " >> "$output_file"
+
 # Loop through hosts URLs
 for url in "${hosts_urls[@]}"
 do
