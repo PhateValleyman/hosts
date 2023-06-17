@@ -54,9 +54,10 @@ if [ $(uname -m) = "armv5tel" ] ; then
     echo "hosts by PhateValleyman"
 elif [ $(uname -m) = "aarch64" ] ; then
 	su -c mkdir -p /data/adb/modules/umbrella/system/etc
-	su -c mv $output_file /data/adb/modules/umbrella/system/etc/hosts
-	echo "'hosts' file has been moved to /data/adb/modules/umbrella/system/etc/hosts"
-	echo "reboot phone to take effect"
+	su -c cp $output_file /data/adb/modules/umbrella/system/etc/hosts
+	su -lp 2000 -c "cmd notification post -S bigtext -i /storage/3A5D-C198/DCIM/.Logos/Umbrella.png -t 'SM-J600FN' 'Umbrella' 'hosts file has been updated...'" >/dev/null 2>&1
+	echo -e "to copy hosts to system directly type:\n\tsu\n\tmount -o rw,remount /\n\tmv hosts /system/etc/hosts\n\tmount -o ro,remount /\n"
+	echo -e "backup of 'hosts' file has been moved to \n'/data/adb/modules/umbrella/system/etc/hosts'\nand load at next reboot as Magisk module"
 	echo "hosts by PhateValleyman"
 else
     echo "Unknown system architecture"
