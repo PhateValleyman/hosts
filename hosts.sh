@@ -45,3 +45,21 @@ done
 
 # Print results
 echo -e "\nHosts files downloaded and merged into file:\n'$output_file'\n"
+
+# Run copy 'hosts' file to specific directory
+if [ $(uname -m) = "armv5tel" ] ; then
+    mv $output_file /ffp/etc/hosts
+    echo "'hosts' file has been moved to /ffp/etc/hosts"
+    echo "reboot server to take effect"
+    echo "hosts by PhateValleyman"
+elif [ $(uname -m) = "aarch64" ] ; then
+	su -c mkdir -p /data/adb/modules/umbrella/system/etc
+	su -c mv $output_file /data/adb/modules/umbrella/system/etc/hosts
+	echo "'hosts' file has been moved to /data/adb/modules/umbrella/system/etc/hosts"
+	echo "reboot phone to take effect"
+	echo "hosts by PhateValleyman"
+else
+    echo "Unknown system architecture"
+    echo "Manual copy 'hosts' file to system directory"
+    echo "hosts by PhateValleyman"
+fi
