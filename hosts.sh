@@ -11,6 +11,8 @@ hosts_urls=(
 	"https://adaway.org/hosts.txt"
 	"https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=0&mimetype=plaintext"
 	"https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
+	"https://raw.githubusercontent.com/r-a-y/mobile-hosts/master/AdguardDNS.txt"
+	"https://github.com/PhateValleyman/hosts/raw/master/hosts/hosts"
 )
 
 # Define output 'hosts' file name
